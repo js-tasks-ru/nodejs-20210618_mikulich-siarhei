@@ -1,0 +1,7 @@
+// Correct result:
+James
+Richard
+John
+Robert
+James
+Michael
