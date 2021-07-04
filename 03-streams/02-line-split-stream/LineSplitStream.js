@@ -4,7 +4,7 @@ const os = require('os');
 class LineSplitStream extends stream.Transform {
   constructor(options) {
     super(options);
-    console.log(options);
+
     this.options = options || {};
     this.partRaw = '';
   }
