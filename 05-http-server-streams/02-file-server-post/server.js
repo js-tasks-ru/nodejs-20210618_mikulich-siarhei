@@ -18,18 +18,10 @@ server.on('request', (req, res) => {
     const pathname = url.parse(req.url).pathname.slice(1);
     const filepath = path.join(__dirname, 'files', pathname);
 
-    /**
-     * #4
-     */
     if (pathHasNesting(pathname)) {
       res.statusCode = 400;
       return res.end('[400] Nesting isn`t support');
     }
-
-    // if (!fs.exists(filepath)) {
-    //   res.statusCode = 409;
-    //   return res.end('[409] File is exist');
-    // }
 
     switch (req.method) {
       case 'POST':
