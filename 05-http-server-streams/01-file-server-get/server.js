@@ -13,18 +13,9 @@ const pathHasNesting = (path) => {
 };
 
 const getFile = (req, res, filepath) => {
-  const chunks = [];
   const stream = fs.createReadStream(filepath);
 
-  stream.on('data', (chunk) => {
-    chunks.push(chunk);
-  });
-
-  stream.on('end', () => {
-    const content = Buffer.concat(chunks).toString('utf-8');
-
-    return res.end(content);
-  });
+  stream.pipe(res);
 
   stream.on('error', (err) => {
     if (err.code === 'ENOENT') {
